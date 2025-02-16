@@ -18,7 +18,10 @@ Repository Number: T14
   - Name
   - Email
   - Picture Icon (only icon not user's picture)
-- User's picture will be displayed in upcoming repository
+
+### Version 1 (v1)
+
+User can change/update his/her profile picture
 
 ## How to Run:
 

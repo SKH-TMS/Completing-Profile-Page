@@ -29,7 +29,7 @@ Repository Number: T14
 
 ### Version 2 (v2)
 
-- Ecrypted Password is used for both Register and Login. Only router.ts file is updated for both src/api/login and src/api/register
+- Ecrypted Password is used for both Register and Login. Only router.ts file is updated for both **src/app/api/login** and **src/app/api/register**.
 - User can change/update his/her profile picture
 - No global styling using globals.css
 

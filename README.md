@@ -23,9 +23,10 @@ Repository Number: T14
 
 ### Version 1 (v1)
 
+- encrypted password used for both registration and login.
 - User can change/update his/her profile picture
 - No global styling using globals.css
-- A creditial exists in database but cannot logged in using Login page. Register page works fine.
+-
 
 ## How to Run:
 

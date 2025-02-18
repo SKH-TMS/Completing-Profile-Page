@@ -19,14 +19,19 @@ Repository Number: T14
   - Email
   - Picture Icon (only icon not user's picture)
 - No global styling using globals.css
-- During registeration, password is not encrypted
+- Password is not encrypted during both register and login
 
 ### Version 1 (v1)
 
-- encrypted password used for both registration and login.
+- Password is not encrypted during registeration and login
 - User can change/update his/her profile picture
 - No global styling using globals.css
--
+
+### Version 2 (v2)
+
+- Ecrypted Password is used for both Register and Login. Only router.ts file is updated for both src/api/login and src/api/register
+- User can change/update his/her profile picture
+- No global styling using globals.css
 
 ## How to Run:
 

@@ -18,10 +18,14 @@ Repository Number: T14
   - Name
   - Email
   - Picture Icon (only icon not user's picture)
+- No global styling using globals.css
+- During registeration, password is not encrypted
 
 ### Version 1 (v1)
 
-User can change/update his/her profile picture
+- User can change/update his/her profile picture
+- No global styling using globals.css
+- A creditial exists in database but cannot logged in using Login page. Register page works fine.
 
 ## How to Run:
 

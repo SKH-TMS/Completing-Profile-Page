@@ -1,13 +1,15 @@
 import { NextResponse } from "next/server";
 import { MongoClient } from "mongodb";
 import { generateToken, setToken } from "../../../utils/token";
-import bcrypt from "bcryptjs"; // Import bcrypt for password comparison
 
-const uri = process.env.MONGODB_URI!;
-const client = new MongoClient(uri);
+// Fetching the MongoDB URI from environment variables
+const uri = process.env.MONGODB_URI;
 
 export async function POST(req: Request) {
+  const client = new MongoClient(uri as string);
+
   try {
+    // Parse the request body
     const { email, password } = await req.json();
 
     if (!email || !password) {
@@ -25,17 +27,8 @@ export async function POST(req: Request) {
     // Find the user with the matching email
     const user = await collection.findOne({ email });
 
-    // If user is not found or password is incorrect
-    if (!user) {
-      return NextResponse.json({
-        success: false,
-        message: "Invalid email or password.",
-      });
-    }
-
-    // Compare hashed password with provided password
-    const isPasswordValid = await bcrypt.compare(password, user.password);
-    if (!isPasswordValid) {
+    // If user is not found or the password doesn't match
+    if (!user || user.password !== password) {
       return NextResponse.json({
         success: false,
         message: "Invalid email or password.",
@@ -46,8 +39,7 @@ export async function POST(req: Request) {
     const token = generateToken({
       email: user.email,
       firstName: user.firstName,
-      lastName: user.lastName,
-      profilePic: user.profilePic, // Ensure correct field is used
+      secondName: user.secondName,
       contact: user.contact,
     });
 
@@ -57,8 +49,7 @@ export async function POST(req: Request) {
       user: {
         email: user.email,
         firstName: user.firstName,
-        lastName: user.lastName,
-        profilePic: user.profilePic,
+        secondName: user.secondName,
         contact: user.contact,
       },
     });
@@ -68,12 +59,13 @@ export async function POST(req: Request) {
 
     return res;
   } catch (error) {
-    console.error("Login error:", error);
+    console.error("Login error:", error); // Log the full error
     return NextResponse.json({
       success: false,
       message: "Failed to log in. Please try again later.",
     });
   } finally {
+    // Close the MongoDB connection
     await client.close();
   }
 }

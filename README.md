@@ -31,7 +31,33 @@ Repository Number: T14
 
 - Ecrypted Password is used for both Register and Login. Only router.ts file is updated for both **src/app/api/login** and **src/app/api/register**.
 - User can change/update his/her profile picture
-- No global styling using globals.css
+- **Problem in this versions:** Logout button doesn't exist in navbar
+- **Another Problem:** when logged-in, then login and register link still exist in the navbar.
+
+### Version 3 (v3)
+
+- problem of v2 is solved in this version. Logout link in navbar, and login/register links are hide when logged-in
+- **Problme in this version v3:** didn't use models. due to this, connection and collections names will have to write in each file.
+
+### Version 4 (v4)
+
+- Models are used to resolve above version's error.
+- **Problem:** token doesn't contain **userType**. this will be necessary in case of multiple users (as in upcoming Repositories).
+
+### Version 5 (v5)
+
+- **userType** is used in token. this will be called
+  `app/Login/page.ts`
+  and
+  `app/Navbar/page.ts`
+
+### Version 6 (v6)
+
+- same as v3, but **userType** is used in token when login. Previous repo does this type of work, but the repo is based on model. This version is without models.
+- **userType** is used in token. this will be called
+  `app/Login/page.ts`
+  and
+  `app/Navbar/page.ts`
 
 ## How to Run:
 
